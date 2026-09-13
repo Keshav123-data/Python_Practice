@@ -106,3 +106,79 @@ for dep,emp in company:
         e_count[dep] = 1
 
 print(e_count)   
+
+# Q. Find the employee with the highest salary in each department.
+
+emps = [
+    {"name": "Rahul", "department": "IT", "salary": 50000},
+    {"name": "Amit", "department": "HR", "salary": 40000},
+    {"name": "Sneha", "department": "IT", "salary": 70000},
+    {"name": "Priya", "department": "HR", "salary": 55000},
+    {"name": "Rohit", "department": "Sales", "salary": 45000},
+    {"name": "Neha", "department": "Sales", "salary": 60000}
+]
+
+
+highest_earner = {}
+
+for emp in emps:
+    dep = emp["department"]
+
+    if dep not in  highest_earner:
+        highest_earner[dep]= emp
+
+    elif emp["salary"] > highest_earner[dep]["salary"]:
+        highest_earner[dep] = emp
+
+print("Highest earner by department:",highest_earner)
+
+# Q. Given daily sales, calculate the day with the highest sales.
+sales_days =  {
+    "Monday": 12000,
+    "Tuesday": 18000,
+    "Wednesday": 15000,
+    "Thursday": 22000,
+    "Friday": 17000
+}
+
+highest_day = ""
+highest_sales = 0
+for day, sales in sales_days.items():
+    if sales > highest_sales:
+        highest_sales = sales
+        highest_day = day
+
+print("Highest sales day is", highest_day, "with sales of ₹", highest_sales)
+
+
+# Q. Calculate the percentage contribution of each product to total sales.
+
+sales_product = [
+    ("Laptop", 50000),
+    ("Mobile", 15000),
+    ("Tablet", 30000),
+    ("Laptop", 45000),
+    ("Mobile", 20000),
+    ("Tablet", 25000)
+]
+
+total_sales_pr = {}
+
+for pr,sal in sales_product:
+    if pr in total_sales_pr:
+        total_sales_pr[pr] += sal
+    else:
+        total_sales_pr[pr] = sal
+
+print(total_sales_pr)
+
+grand_total = sum(total_sales_pr.values())
+
+print(grand_total)
+
+
+for pr,sal in total_sales_pr.items():
+    percentage = (sal / grand_total) * 100
+    print(pr,":",round(percentage,2),"%")
+
+
