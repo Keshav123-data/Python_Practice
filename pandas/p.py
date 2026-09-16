@@ -1,0 +1,167 @@
+# Q. Create a DataFrame from a dictionary containing employee data.
+import pandas as pd
+employee_data = {
+    "name" : ["keshav","mahesh","nagesh","mahesh"],
+    "salary" : [70000,50000,60000,50000],
+    "age" : [23,45,23,45]
+}
+
+df = pd.DataFrame(employee_data)
+print(df)
+print(type(df))
+
+# Q. Select employees whose salary is greater than ₹60,000.
+
+result = df[df["salary"] >= 60000]
+print(result)
+
+# Q. Find and remove duplicate rows.
+duplicates = df[df.duplicated()]
+print("duplicated columns:")
+print(duplicates)
+
+df =  df.drop_duplicates()
+print(df)
+
+# Q. Detect missing values in every column.
+
+students = {
+    "name":["keshav", "mahesh",None,"karan"],
+    "age":[23,None,34,35],
+    "location":["pune","mumbai","delhi",None]
+}
+
+df1 = pd.DataFrame(students)
+print(df1)
+
+print( df1.isnull())
+print(df1.isnull().sum())
+
+# Q. Fill missing salary values with the average salary.
+average_mean =df1["age"].mean()
+print(average_mean)
+
+df1["age"] = df1["age"].fillna(average_mean, inplace = True)
+print(df1)
+
+# Q. Group employees by department and calculate average salary.
+
+emp = {
+    "name" : ["keshav","mahesh","nagesh","karan"],
+    "age" : [23,24,24,25],
+    "department" : ["IT", "HR","IT","Finance"],
+    "salary": [80000,60000,30000,50000]
+}
+
+df2 = pd.DataFrame(emp)
+print(df2)
+
+result1 = df2.groupby("department")["salary"].mean()
+
+print("department wise averaged salary")
+print(result1)
+
+
+# Q. Find the top 5 highest-paid employees.
+
+employees = {
+    "name":["keshav","mahesh","nagesh","karan","hari","om","rahul","kirti","abhi"],
+    "salary":[30000,50000,60000,10000,30000,50000,80000,90000,10000]
+}
+
+df3 = pd.DataFrame(employees)
+print(df3)
+
+sorted_df = df3.sort_values("salary", ascending=False)
+print(sorted_df.head())
+
+
+# Q. Sort a DataFrame by salary in descending order.
+
+sorted_df1 = df3.sort_values("salary", ascending=False)
+print(sorted_df1)
+
+# Q. Add a new column called Annual_Salary.
+
+df3["annual_salary"] = df3["salary"] * 12
+
+print("new DataFrame:")
+print(df3)
+
+
+# Q. Rename multiple columns at once.
+df3 = df3.rename(columns = {
+    "name":"emp_name",
+    "salary":"emp_salary"
+})
+
+print(df3)
+
+# Q. Filter rows using multiple conditions.
+dataframe = {
+    "name":["keshav","mahesh","nagesh","karan","nagesh","om"],
+    "department":["IT","Finance","IT","HR","IT","Finance"],
+    "salary":[30000,50000,60000,20000,70000,60000]
+}
+
+df4 = pd.DataFrame(dataframe)
+print(df4)
+
+Conditional_df =df4[(df4["department"] =="IT") & (df4["salary"] >=50000)]
+
+print(Conditional_df)
+
+# Q. Use value_counts() to find the most common job role.
+
+df4["job"] = ["analyst", "data_eng","sql_administrator", "analyst", "accountant","analyst"]
+print(df4)
+
+job_counts = df4["job"].value_counts()
+print(job_counts)
+
+common_role = job_counts.sort_values(ascending=False).head(1)
+print("common role:",common_role)
+
+# Q. Use groupby() to calculate total sales by region.
+
+sales_df = {
+    "product":["phone","headphone","laptop","pen","TV","shirt"],
+    "resion":["south","north","west","east","east","south"],
+    "sales":[150,350,607,207,450,943]
+}
+
+df5 = pd.DataFrame(sales_df)
+print(df5)
+
+ts_by_re = df5.groupby("resion")["sales"].sum()
+print("total sales by the resion :", ts_by_re)
+
+
+# Q. Use merge() to combine customer and order DataFrames.
+
+costomers = pd.DataFrame({
+    "costomer_ID" :[101,102,103,104,105,106],
+    "name" : ["keshav",'mahesh',"ganesh","karan","nagesh","om"],
+    "city" : ["latur","pune","mumbai","nagpur","satara","ratnagiri"]
+})
+
+orders = pd.DataFrame({
+    "order_id" : [1,2,3,4,5,6],
+    "costomer_ID" : [101,103,104,103,102,102],
+    "amount" : [134,256,564,864,345,3545]
+})
+
+res = pd.merge(costomers ,orders , on = "costomer_ID")
+print("merged_Dataframe:", res)
+
+# Q. Create a pivot table showing sales by region and product.
+
+pivot = pd.pivot_table(
+    df5,
+    index = "resion",
+    values = "sales",
+    columns = "product",
+    aggfunc = "sum"
+    )
+
+print(pivot)
