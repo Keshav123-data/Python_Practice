@@ -182,3 +182,169 @@ for pr,sal in total_sales_pr.items():
     print(pr,":",round(percentage,2),"%")
 
 
+# advance 
+
+# Q. Given a list of employee salaries, find the employees earning above the average salary.
+
+empl = {
+    "keshav" : 20000,
+    "mahesh" : 50000,
+    "karan"  : 70000,
+    "nagesh" : 10000,
+    "om"     : 90000
+}
+
+avg = sum(empl.values()) / len(empl)
+
+print("\naverage of total sales :",avg)
+
+for name, salary in empl.items():
+    if salary > avg:
+        print("emplyees en=arns more than avg :",name, salary)
+
+# using pandas
+import pandas as pd
+
+df6 = pd.DataFrame(list(empl.items()),columns = ("employee", "salary"))
+print("\n",df6)
+
+avg1 = df6[df6["salary"] > df6["salary"].mean()]
+
+print("\nemployees enrning more than average:")
+print(avg1)
+
+# Q. From a list of numbers, find the top 3 highest values without using sort().
+numbers = [23,45,78,3,45,78,89,4,23,5,57,8,90]
+
+top_3 = []
+
+for i in range(3):
+    highest = max(numbers)
+    top_3.append(highest)
+    numbers.remove(highest)
+    
+print("top 3 highest numbers:",top_3)   
+
+# Q. Given a list of names, find names that contain the letter "a".
+names = ["keshav", "mahesh", "kirti", "om","rau"]
+
+for i in names:
+    if "a" in i.lower():
+        print("names which contaiins 'a' :",i)
+
+# Q. Count how many times each word appears in a sentence.
+
+sentence = "welcome to python in the world of artificial intelligence"
+
+words = sentence.split()
+
+word_count = {}
+
+for word in words:
+    if word in word_count:
+        word_count[word] += 1
+
+    else:
+        word_count[word] = 1
+
+print("\nword counts in sentence :", word_count)        
+
+# Q. given 
+sales1 = [1200, 1500, 900, 2200, 1800, 2500]
+
+# Q1. total sales
+
+total_sale = sum(sales1)
+print("\ntotal sales:",total_sale)
+
+# Q2. average sales
+
+avg_sales = sum(sales1) / len(sales1)
+print("\naverage sales:",avg_sales)
+
+# Q3 highest sales
+
+highest_sale = max(sales1)
+print("\nhighest sales:",highest_sale)
+
+# Q4 lowest sale
+
+lowest_sale = min(sales1)
+print("\nlowest sales:",lowest_sale)
+
+# Q. Find the percentage increase from one month's sales to the next month.
+
+previous_month = 1200
+next_month = 1500
+
+increase = ((next_month - previous_month) / previous_month) * 100
+print("increase percentege : ",increase,"%")
+
+for i in range(1, len(sales1)):
+    increase1 = ((sales1[i]-sales1[i-1])/sales1[i-1]) * 100
+    print("month:", 1, "increase percentage:",increase1,"%")
+
+# Q. Given employee ages, divide employees into: Below 25 → Young, 25–40 → Adult, Above 40 → Senior
+
+employee_ages = [18,16,50,70,30,50,70,20,38,15,18,30,16]
+
+for i in employee_ages:
+    if i < 25:
+        print("young")
+
+    elif i < 40:
+        print("adult")
+
+    else:
+        print("senior")
+
+# Q. Given a list of transaction amounts, separate positive and negative transactions.
+
+transactions = [20000,-300,500,-900,45,-54,-56,34,-67,-67,34,876,]
+
+pos_tra = []
+neg_tra = []
+
+for i in transactions:
+    if i > 0:
+        pos_tra.append(i)
+    else:
+        neg_tra.append(i)  
+print("\npositive transactions:", pos_tra)
+print("negative transactions:", neg_tra)   
+
+# Q. Find all numbers that occur more than once in a list.
+
+number = [10,10,20,30,50,60,30,40,20,30,90,60,80,70]
+
+count_num = {}
+
+for num in number:
+    if num in count_num:
+        count_num[num] += 1 
+    else:
+        count_num[num] = 1 
+print("\nfrquency of numbers:", count_num)
+
+duplicates = []
+
+for num, frequency in count_num.items():
+    if frequency > 1:
+        duplicates.append(num)
+
+print("numbers which are occurs frequency more than one:", duplicates)       
+
+# Q. Create a dictionary containing each employee's name and salary, then find the employee with the highest salary.
+
+dictionary = {
+    "name" : ["keshav","mahesh","nagesh","karan","om","hari"],
+    "salary" : [30000,40000,10000,60000,80000,30000]
+}
+
+print(dictionary)
+
+max_salary = max(dictionary["salary"])
+name = dictionary["name"][dictionary["salary"].index(max_salary)]
+
+print("name of employee:", name)
+print("highest salary", max_salary)
