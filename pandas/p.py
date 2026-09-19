@@ -165,3 +165,81 @@ pivot = pd.pivot_table(
     )
 
 print(pivot)
+
+# Q. create thsis DataFrame 
+
+import pandas as pd
+
+data = {
+    "Name": ["Amit", "Priya", "Rahul", "Sneha", "Amit"],
+    "Age": [25, 28, 24, 30, 25],
+    "Department": ["IT", "HR", "IT", "Finance", "IT"],
+    "Salary": [45000, 55000, 40000, 65000, 45000]
+}
+
+new_df = pd.DataFrame(data)
+
+print("\nDataFrame:\n",new_df)
+
+# Q. Display the first 3 rows.
+
+print("\ntop three rows:\n",new_df.head(3))
+
+# Q. Display the last 2 rows.
+
+print("\nbottom 3 rows:\n",new_df.tail(3))
+
+# Q. Find the number of rows and columns.
+
+rows, columns = new_df.shape
+print("\nnumber of rows:", rows)
+print("number of columns:", columns)
+
+# Q. Display only the Name and Salary columns.
+
+print("\n",new_df[["Name","Salary"]])
+
+# Q. Find employees whose salary is greater than ₹50,000.
+
+print("\nemployees whose salary is greter than 50000:\n",new_df[new_df["Salary"]> 50000])
+
+# Q. Find employees whose age is greater than 25.
+
+print("\nemployees whose age is greater than 25:\n", new_df[new_df["Age"] > 25])
+
+# Q. Find employees working in the IT department.
+
+print("\nemployees whose are from IT department:\n", new_df[new_df["Department"] == "IT"])
+
+# Q. Find the average salary.
+
+print("\naverage dalary:\n", new_df["Salary"].mean())
+
+# Q. Find the maximum salary.
+
+print("\nmaximum salary:\n",new_df["Salary"].max())
+
+# Q. Find the employee with the minimum salary.
+
+print("\nemployee whose salary is minimun:\n", new_df.loc[new_df["Salary"].idxmin()])
+
+# Q. Find the number of employees in each department.
+
+print("\nnumber of employees in each department:\n", new_df["Department"].value_counts())
+
+# Q. Calculate the average salary for each department.
+
+print("\naverage salary by each department:\n", new_df.groupby("Department")["Salary"].mean())
+
+# Q. Sort employees by salary from highest to lowest.
+
+print("\nsorted salary descending:\n",new_df.sort_values(by = "Salary", ascending = False))
+
+# Q. Add a column called Annual_Salary.
+
+new_df["Annual_Salary"] = new_df["Salary"] * 12 
+print("\n",new_df)
+
+# Q. Remove duplicate employees.
+new_df = new_df.drop_duplicates()
+print("\n",new_df)
