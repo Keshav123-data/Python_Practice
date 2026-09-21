@@ -243,3 +243,47 @@ print("\n",new_df)
 # Q. Remove duplicate employees.
 new_df = new_df.drop_duplicates()
 print("\n",new_df)
+
+# Q. Find employees whose salary is above the average salary.
+
+above_average = new_df.loc[new_df["Salary"] > new_df["Salary"].mean(), "Name"]
+print("\nemployees whose salary is greater than avrerage of salary:\n",above_average)
+
+# Q. Find the average age of employees in each department.
+
+a = new_df.groupby("Department")["Age"].mean()
+print("\naverage age of each department:\n",a)
+
+# Q. Find the highest salary in each department.
+
+print("\nhighest salary by Department:\n:",new_df.groupby("Department")["Salary"].max())
+
+# Q. Find the lowest salary in each department.
+print("\nlowest salary in each department:\n", new_df.groupby("Department")["Salary"].min())
+
+# Q. Find the employee with the highest salary in each department.
+print("\nemployees whose Salary is highest in each Department:\n",new_df.loc[new_df.groupby("Department")["Salary"].idxmax()])
+
+# Q. Count how many employees are in each department.
+print("\nnumber of employees in each department:\n",new_df["Department"].value_counts())
+
+# Q. Find the percentage of employees belonging to each department.
+
+print(new_df["Department"].value_counts(normalize=True) * 100)
+
+# Q. Create a new column: "Salary_Category" Salary < 45,000 → Low,45,000 - 60,000 → Medium, 60,000 → High
+
+new_df["Salary_Category"] = pd.cut(
+    new_df["Salary"],
+    bins= [0, 45000, 60000, float("inf")], # inf = infinity
+    labels = ["low","medium","high"]
+)
+print("\n", new_df)
+
+# Q. Find how many employees belong to each salary category.
+
+print("\n", new_df["Salary_Category"].value_counts())
+
+# Q. Find employees whose salary is between ₹40,000 and ₹60,000.
+
+print("\n", new_df.loc[(new_df["Salary"] >= 40000) & (new_df["Salary"] <= 60000)])
