@@ -126,15 +126,15 @@ print("common role:",common_role)
 
 sales_df = {
     "product":["phone","headphone","laptop","pen","TV","shirt"],
-    "resion":["south","north","west","east","east","south"],
+    "region":["south","north","west","east","east","south"],
     "sales":[150,350,607,207,450,943]
 }
 
 df5 = pd.DataFrame(sales_df)
 print(df5)
 
-ts_by_re = df5.groupby("resion")["sales"].sum()
-print("total sales by the resion :", ts_by_re)
+ts_by_re = df5.groupby("region")["sales"].sum()
+print("total sales by the region :", ts_by_re)
 
 
 # Q. Use merge() to combine customer and order DataFrames.
@@ -158,7 +158,7 @@ print("merged_Dataframe:", res)
 
 pivot = pd.pivot_table(
     df5,
-    index = "resion",
+    index = "region",
     values = "sales",
     columns = "product",
     aggfunc = "sum"
