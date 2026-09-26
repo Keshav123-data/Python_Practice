@@ -1,4 +1,4 @@
-# Q.2 Write a program to check whether a number is positive, negative, or zero.
+# Q. Write a program to check whether a number is positive, negative, or zero.
 num = -1
 if num > 0 :
     print ("Positive Number");
@@ -164,3 +164,16 @@ final_amount = amount - discount
 print("\npurchase_amount:",amount)
 print("\ndisount:",discount)
 print("\nfinal_amount:",final_amount)
+
+# Q.3 Find the largest of three numbers.
+
+num1 =10;
+num2 = 14;
+num3 = 12;
+if (num1 >= num2) and (num1 >= num3):
+    largest = num1;
+elif (num2 >= num1) and (num2 >= num3):
+    largest = num2;
+else:
+    largest = num3;
+print ("The Largest Number is :",largest)
