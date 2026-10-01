@@ -90,3 +90,129 @@ print("\nNumber's table:")
 for i in range(1,11):
     print(num * i)
 
+# Q. Find the factorial of a number.
+number = 5
+
+factorial = 1
+
+for i in range(1, number + 1):
+    factorial = factorial * i
+
+print("Factorial:", factorial)
+
+
+# Q. Count the number of digits in a number.
+
+new_num = 1234
+
+count = 0
+
+while new_num > 0:
+    new_num = new_num // 10
+    count = count + 1
+
+print("Number of digits:", count)
+
+# Q. Reverse a number.
+
+reverse = 0
+while new_num > 0:
+    digit = new_num % 10
+    reverse = reverse * 10 + digit
+    new_num = new_num // 10
+
+print("Reversed number:", reverse)
+
+# Q. Check whether a number is prime.
+
+if new_num<= 1:
+    print("Not a prime number")
+else:
+    is_prime = True
+
+    for i in range(2, new_num):
+        if new_num % i == 0:
+            is_prime = False
+            break
+
+    if is_prime:
+        print("Prime number")
+    else:
+        print("Not a prime number")
+
+# Q. Print all prime numbers from 1 to 100.
+
+for new_numb in range(2,101):
+    is_prime = True
+
+    for i in range(2,new_numb):
+        if new_numb % i == 0:
+            is_prime = False
+            break
+    if is_prime:
+        print(new_numb)
+
+# Q. Find the sum of digits of a number.
+
+n = 12345
+sum_of_digits = 0
+while n > 0:
+    digit = n % 10
+    sum_of_digits += digit
+    n = n // 10
+print("sum_of_digits:", sum_of_digits)
+
+# Q. Find the largest number among 10 user-entered numbers.
+largest = None
+
+for i in range(2):
+    num = int(input("Enter a number:"))
+    if largest is None or num > largest:
+        largest = num
+
+print("the largest number user entered is:", largest)
+
+# Q. Keep asking for numbers until the user enters 0.
+
+while True:
+    num = int(input("enter the number:"))
+    if num == 0:
+        break
+print("your entered number is matched with 0:",num)
+
+
+# Q. print pattern 1 to 6 stars
+for i in range(1,7):
+    for j in range(i):
+        print("*", end = "")
+    print() 
+
+# Q. print pattern 1 to 6 numbers
+
+for i in range(1,7):
+    for j in range(1,i+1):
+        print(j,end = "")
+    print()
+
+# Q. Print all numbers from 1 to 500 that are divisible by 7.
+
+for i in range(1, 501):
+    if i % 7 == 0:
+        print(i)
+
+
+counts = 0
+
+for i in range(1,101):
+    if i % 3 == 0:
+        counts += 1
+    
+print("Count of numbers divisible by 3:", counts)
+
+# Q. Print numbers from 1 to 10, but break the loop when the number is 7.
+
+for i in range(1,10):
+    if i == 7:
+        break
+    print(i)
+
