@@ -136,3 +136,12 @@ print(list(filter(lambda x : x % 2 == 0,numbers)))
 # Q. Use lambda with sorted().
 
 print(sorted(numbers, key = lambda x : x))
+
+employee = [
+    {"name" : "keshav", "salary" : 45000},
+    {"name" : "mahesh", "salary" : 50000},
+    {"name" : "nagesh", "salary" : 30000},
+    {"name" : "karan", "salary" : 40000}
+]
+
+print(sorted(employee, key = lambda x : x["salary"]))
