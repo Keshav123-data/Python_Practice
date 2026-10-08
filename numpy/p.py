@@ -10,7 +10,7 @@ for i in list1:
 print(result)
 print(type(result))
 
-# lets convert into iin array
+# lets convert into in array
 result_array = np.array(result)
 print(result_array)
 
@@ -201,3 +201,98 @@ unique_values, frequency = np.unique(unique_array, return_counts = True)
 
 print("\nunique values:",unique_values)
 print("frequency:", frequency)
+
+# Q. Create a NumPy array from 1 to 20.
+
+array7 = np.arange(1,21)
+print("\narray:\n",array7)
+
+# Q. Create a 5×5 matrix.
+
+array8 = np.arange(1,26).reshape(5,5)
+print("\narray:\n", array8)
+
+# Q. Find the shape of an array.
+
+print("\nshape of array:",array8.shape)
+
+# Q. Find the number of dimensions.
+
+print("\nnumber of dimention:", array8.ndim)
+
+# Q. Find the data type.
+
+print("\nData type:", array8.dtype)
+
+# Q. Find the maximum and minimum.
+
+print("\nmax of array8:",np.max(array8))
+print("min of array8:", np.min(array8))
+
+# Q. Calculate mean, median, and standard deviation.
+
+print("\nmean:", np.mean(array8))
+print("median:",np.median(array8))
+print("std:", np.std(array8))
+
+# Q. Find values greater than 20.
+
+print("\nvalues which are greater than 20 in a array",array8[array8 >20])
+
+# Q. Replace values greater than 50 with 100.
+
+array8[array8 > 20] = 20
+print("\narray:\n", array8)
+
+# Q.Replace negative values with zero.
+array8[array8 < 0] = 0
+print("\narray:\n", array8)
+
+# Q. Reshape an array into 4×5.
+
+print("\narray:\n",array8.reshape(25,1))
+
+# Q. Calculate the sum of each row.
+
+print("\ntotal of rows:", np.sum(array8, axis = 1))
+
+# Q. Calculate the sum of each column.
+
+print("\nTotal of columns:", np.sum(array8, axis = 0))
+
+# Q. Create 20 random integers between 1 and 100.
+
+array9 = np.random.randint(1,101,20)
+print(array9)
+
+# Q. Find their mean, median, standard deviation, maximum, and minimum.
+
+print("\nmean:", np.mean(array9))
+print("median:", np.median(array9))
+print("std:", np.std(array9))
+print("max:", np.max(array9))
+print("min:", np.min(array9))
+
+# Q. Find unique values.
+
+print(np.unique(array9))
+
+# Q. Count occurrences of each unique value.
+
+value, count = np.unique(array9, return_counts = True)
+print("\nvalues and counts:", value,":", count)
+
+# Q. Normalize an array.
+
+normalized_array9 = (array9 - np.min(array9)) / (np.max(array9) - np.min(array9))
+print("\nnormalized array:", normalized_array9)
+
+# Q. Find indexes where values are greater than 75.
+
+print(np.where(array9 > 75))
+
+# Q. 136. Combine two NumPy arrays.
+
+array10 = np.arange(1,101,20)
+combined_array = np.concatenate((array9, array10))
+print("combined_array:",combined_array)
